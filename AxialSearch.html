@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Axial Company Search</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+    }
+    input[type="text"] {
+      font-size: 1.2rem;
+      padding: 0.5rem;
+      width: 300px;
+    }
+    input[type="submit"] {
+      font-size: 1.2rem;
+      padding: 0.5rem 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Axial Company Search</h1>
+  <form id="companyForm">
+    <input type="text" id="companyInput" placeholder="Enter company name" required>
+    <input type="submit" value="Go">
+  </form>
+
+  <script>
+    document.getElementById('companyForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const company = document.getElementById('companyInput').value.trim().toLowerCase();
+      if (company) {
+        const slug = company.split(/\s+/).join('-');
+        const url = `https://network.axial.net/company/${slug}`;
+        window.open(url, '_blank');
+      }
+    });
+  </script>
+</body>
+</html>
